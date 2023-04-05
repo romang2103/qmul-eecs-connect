@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
+import './ticket.css';
 
-function Ticket() {
+function Feedback() {
   const [subject, setSubject] = useState('');
   const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('Low');
+  const [category, setCategory] = useState('General Feedback');
+  const [semester, setSemester] = useState('Fall 2022');
+  const [courseCode, setCourseCode] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // You can add code here to send the ticket information to the backend
-    alert(`Ticket submitted: ${subject}, ${description}, ${priority}`);
+    // You can add code here to send the feedback information to the backend
+    alert(`Feedback submitted: ${subject}, ${description}, ${category}, ${semester}, ${courseCode}`);
     setSubject('');
     setDescription('');
-    setPriority('Low');
+    setCategory('General Feedback');
+    setSemester('Fall 2022');
+    setCourseCode('');
   };
 
   const handleSubjectChange = (event) => {
@@ -22,31 +27,46 @@ function Ticket() {
     setDescription(event.target.value);
   };
 
-  const handlePriorityChange = (event) => {
-    setPriority(event.target.value);
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const handleSemesterChange = (event) => {
+    setSemester(event.target.value);
+  };
+
+  const handleCourseCodeChange = (event) => {
+    setCourseCode(event.target.value);
   };
 
   return (
-    <div>
-      <h2>Ticket</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="subject">Subject:</label>
-        <input type="text" id="subject" name="subject" value={subject} onChange={handleSubjectChange} />
+    <div className="feedback-container">
+      <h2 className="feedback-title">Feedback</h2>
+      <form onSubmit={handleSubmit} className="feedback-form">
+        <label htmlFor="subject" className="feedback-label">Subject:</label>
+        <input type="text" id="subject" name="subject" value={subject} onChange={handleSubjectChange} className="feedback-input" />
         <br />
-        <label htmlFor="description">Description:</label>
-        <textarea id="description" name="description" value={description} onChange={handleDescriptionChange} />
+        <label htmlFor="description" className="feedback-label">Description:</label>
+        <textarea id="description" name="description" value={description} onChange={handleDescriptionChange} className="feedback-input"></textarea>
         <br />
-        <label htmlFor="priority">Priority:</label>
-        <select id="priority" name="priority" value={priority} onChange={handlePriorityChange}>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
+        <label htmlFor="category" className="feedback-label">Category:</label>
+        <select id="category" name="category" value={category} onChange={handleCategoryChange} className="feedback-input">
+          <option value="General Feedback">General Feedback</option>
+          <option value="Course Feedback">Course Feedback</option>
+          <option value="Instructor Feedback">Instructor Feedback</option>
+          <option value="Facilities Feedback">Facilities Feedback</option>
         </select>
         <br />
-        <button type="submit">Submit</button>
+        <label htmlFor="semester" className="feedback-label">Semester:</label>
+        <input type="text" id="semester" name="semester" value={semester} onChange={handleSemesterChange} className="feedback-input" />
+        <br />
+        <label htmlFor="courseCode" className="feedback-label">Course Code:</label>
+        <input type="text" id="courseCode" name="courseCode" value={courseCode} onChange={handleCourseCodeChange} className="feedback-input" />
+        <br />
+        <button type="submit" className="feedback-submit">Submit</button>
       </form>
     </div>
   );
 }
 
-export default Ticket;
+export default Feedback;
