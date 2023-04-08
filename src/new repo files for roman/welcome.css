@@ -1,0 +1,158 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Navigation Bar Styles */
+nav {
+    background-color: #fff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+nav .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+nav .menu li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav .menu li a {
+    font-size: 1rem;
+    color: #333;
+    text-decoration: none;
+}
+
+nav .menu li a:hover {
+    color: #007bff;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-image: linear-gradient(to right, #007bff, #00bfff);
+    padding: 100px 0;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.hero-content .btn-primary {
+    background-color: #fff;
+    color: #007bff;
+    border: 2px solid #007bff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 30px;
+}
+
+.hero-content .btn-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Features Section Styles */
+.features {
+    padding: 100px 0;
+    background-color: #f4f4f4;
+}
+
+.features h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.feature-item {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.feature-item img {
+    margin-bottom: 20px;
+    height: 100px;
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.feature-item p {
+    font-size: 1.2rem;
+    color: #777;
+    line-height: 1.5;
+}
+
+/* About Section Styles */
+.about {
+    padding: 100px 0;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about p {
+    font-size: 1.2rem;
+    color: #777;
+    text-align: center;
+    max-width:
+}
+
+.about a {
+    font-size: 1.2rem;
+    color: #7117;
+    text-align: end;
+    max-width:
+}
