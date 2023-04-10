@@ -147,14 +147,14 @@ nav .menu li a:hover {
     font-size: 1.2rem;
     color: #777;
     text-align: center;
-    max-width:
+    /* max-width: */
 }
 
 .about a {
     font-size: 1.2rem;
     color: #7117;
     text-align: end;
-    max-width:
+    /* max-width: */
 }
 /* Contact Section */
 

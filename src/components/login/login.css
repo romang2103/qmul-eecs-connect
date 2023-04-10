@@ -13,7 +13,7 @@ body {
 }
 
 /* Container styles */
-#root {
+#Login-form {
     max-width: 500px;
     margin: 50px auto;
     padding: 30px;
