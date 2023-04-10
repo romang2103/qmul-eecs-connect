@@ -1,10 +1,5 @@
 import React from "react";
 import "./userDashboard.css";
-import { Link, Route, Routes } from 'react-router-dom';
-import EC from "../ECs/EC";
-import Settings from "../settings/settings";
-import Feedback from '../ticket/ticket'
-import AppRouter from "../../AppRouter";
 
 function UserDashboard() {
   return (

@@ -2,8 +2,6 @@ import logo from '../../assets/logo2.png';
 import './login.css';
 import { useState } from 'react';
 import axios from 'axios';
-import UserDashboard from '../user-dashboard/userDashboard';
-import { useHistory } from 'react-router-dom';
 import Nav from '../navbar/nav';
 
 function Login() {
