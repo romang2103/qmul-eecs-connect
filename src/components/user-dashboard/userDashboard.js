@@ -1,41 +1,23 @@
 import React from "react";
 import "./userDashboard.css";
+import { Link, Route, Routes } from 'react-router-dom';
+import EC from "../ECs/EC";
+import Settings from "../settings/settings";
+import Feedback from '../ticket/ticket'
+import AppRouter from "../../AppRouter";
 
 function UserDashboard() {
   return (
     <div>
-      {/* Navigation Bar */}
-      <nav>
-        <div className="container">
-          <h1 className="logo">
-            <a href="#">QMUL EECS Connect</a>
-          </h1>
-          <ul className="menu">
-            <li>
-              <a href="#">EECS Services &amp; Status</a>
-            </li>
-            <li>
-              <a href="#">Ticket Information</a>
-            </li>
-            <li>
-              <a href="EC.html">Extenuating Circumstances</a>
-            </li>
-            <li>
-              <a href="settings.html">Settings</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section className="hero">
         <div className="container">
           <div className="hero-content">
             <h1>Welcome to EECS Connect</h1>
             <p>Share your feedback and help us improve!</p>
-            <a href="#" className="btn-primary">
+            {/* <a href="#" className="btn-primary">
               Get Started
-            </a>
+            </a> */}
           </div>
         </div>
       </section>
@@ -77,9 +59,9 @@ function UserDashboard() {
             system is designed to help students and staff share their opinions and
             suggestions anonymously.
           </p>
-          <a href="#" className="btn-secondary">
+          {/* <a href="#" className="btn-secondary">
             Learn More
-          </a>
+          </a> */}
         </div>
       </section>
 

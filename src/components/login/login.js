@@ -1,10 +1,10 @@
 import logo from '../../assets/logo2.png';
 import './login.css';
 import { useState } from 'react';
-import UserDashboard from '../user-dashboard/userDashboard';
-import Settings from '../settings/settings'
 import axios from 'axios';
-import EC from '../ECs/EC';
+import UserDashboard from '../user-dashboard/userDashboard';
+import { useHistory } from 'react-router-dom';
+import Nav from '../navbar/nav';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -37,17 +37,8 @@ function Login() {
   return (
     <div>
         {isLoggedIn ? (
-          <UserDashboard />
+          <Nav/>
         ) : (
-          // <form onSubmit={handleLogin}>
-          //   <label htmlFor="email">Email:</label>
-          //   <input type="email" id="email" name="email" value={email} onChange={handleEmailChange} />
-          //   <br />
-          //   <label htmlFor="password">Password:</label>
-          //   <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
-          //   <br />
-          //   <button type="submit">Login</button>
-          // </form>
           <div id='Login-form'>
             <img src={logo} alt="Logo" id="logo" />
             <form onSubmit={handleLogin}>
