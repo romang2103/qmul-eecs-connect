@@ -37,7 +37,7 @@ function Login() {
   return (
     <div>
         {isLoggedIn ? (
-          <EC />
+          <UserDashboard />
         ) : (
           // <form onSubmit={handleLogin}>
           //   <label htmlFor="email">Email:</label>
