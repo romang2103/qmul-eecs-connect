@@ -3,96 +3,101 @@ import './settings.css';
 
 function Settings() {
   return (
-    <div>
-      <h1>Feedback System Settings</h1>
-
-      {/* General Settings section */}
-      <h2 id="general-settings">General Settings</h2>
-      <div id="general-settings-content">
-        <ul>
-          <li className="setting">
-            <p className="setting-name">System Status</p>
-            <div className="setting-value">
-              <label>
-                <input type="radio" name="system-status" value="active" defaultChecked /> Active
-              </label>
-              <label>
-                <input type="radio" name="system-status" value="inactive" /> Inactive
-              </label>
-            </div>
-          </li>
-          <li className="setting">
-            <p className="setting-name">Feedback Window</p>
-            <div className="setting-value">
-              <label htmlFor="feedback-start">Start:</label>
-              <input type="datetime-local" id="feedback-start" name="feedback-start" />
-              <br />
-              <label htmlFor="feedback-end">End:</label>
-              <input type="datetime-local" id="feedback-end" name="feedback-end" />
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      {/* Email Notifications section */}
-      <h2 id="email-notifications">Email Notifications</h2>
-      <div id="email-notifications-content">
-        <ul>
-          <li className="setting">
-            <p className="setting-name">Feedback Received Notification</p>
-            <div className="setting-value">
-              <label>
-                <input type="checkbox" name="feedback-received-notification" /> Enable email notification when feedback is received
-              </label>
-            </div>
-          </li>
-          <li className="setting">
-            <p className="setting-name">Feedback Responded Notification</p>
-            <div className="setting-value">
-              <label>
-                <input type="checkbox" name="feedback-responded-notification" /> Enable email notification when feedback is responded to
-              </label>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      {/* Feedback Categories section */}
-      <h2 id="feedback-categories">Feedback Categories</h2>
-      <div id="feedback-categories-content">
-        <ul>
-          <li className="setting">
-            <p className="setting-name">Add Category</p>
-            <div className="setting-value">
-              <input type="text" name="category-name" placeholder="Category Name" />
-              <button>Add</button>
-            </div>
-          </li>
-          <li className="setting">
-            <p className="setting-name">Remove Category</p>
-            <div className="setting-value">
-              <select name="category-select">
-                <option value="">--Select Category--</option>
-                <option value="1">Category 1</option>
-                <option value="2">Category 2</option>
-                <option value="3">Category 3</option>
-              </select>
-              <button>Remove</button>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      {/* Feedback Questions section */}
-      {/* <h2 id="feedback-questions">Feedback Questions</h2>
-      <div id="feedback-questions-content">
-        <ul>
-          <li className="setting">
-            <p className="setting-name">Add Question</p>
-            <div className="setting-value">
-              <input type="text" name="question-name" placeholder="Question" />
-              <button>Add</button> */}
-    </div>
+    <div class="container">
+<div class="row gutters">
+	<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+		<div class="card h-100">
+			<div class="card-body">
+				<div class="account-settings">
+					<div class="user-profile">
+						<div class="user-avatar">
+              <img src="https://www.pngkit.com/png/detail/126-1262807_instagram-default-profile-picture-png.png" alt="Maxwell Admin"></img>
+						</div>
+						<h5 class="user-name">User Name</h5>
+						<h6 class="user-email">username1@qmul.ac.uk</h6>
+					</div>
+					<div class="bio">
+						<h2 class="mb-2 text-primary">About</h2>
+						<p>Second year computer science student at Queen Mary's University of London, working within the School of Electronics and Engineering.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+		<div class="card h-100">
+			<div class="card-body">
+				<div class="row gutters">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<h2 class="mb-3 text-primary">Personal Details</h2>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="fullName">Full Name</label>
+							<input type="text" class="form-control" id="fullName" placeholder="Enter full name"></input>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="eMail">Email</label>
+							<input type="email" class="form-control" id="eMail" placeholder="Enter email ID"></input>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="phone">Phone</label>
+							<input type="text" class="form-control" id="phone" placeholder="Enter phone number"></input>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="website">Website URL</label>
+							<input type="url" class="form-control" id="website" placeholder="Website url"></input>
+						</div>
+					</div>
+				</div>
+				<div class="row gutters">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<h2 class="mb-3 text-primary">Address</h2>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="Street">Street</label>
+							<input type="name" class="form-control" id="Street" placeholder="Enter Street"></input>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="ciTy">City</label>
+							<input type="name" class="form-control" id="ciTy" placeholder="Enter City"></input>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="sTate">State</label>
+							<input type="text" class="form-control" id="sTate" placeholder="Enter State"></input>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+						<div class="form-group">
+							<label for="zIp">Zip Code</label>
+							<input type="text" class="form-control" id="zIp" placeholder="Zip Code"></input>
+						</div>
+					</div>
+				</div>
+				<div class="row gutters">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<div class="text-right">
+							<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+							<button type="button" id="submit" name="submit" class="btn btn-primary">Update</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
   )};
         
 export default Settings;

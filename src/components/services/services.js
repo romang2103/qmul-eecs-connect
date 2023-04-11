@@ -22,22 +22,25 @@ const Services = () => {
   }, []);
 
   return (
-    <div>
-      <table>
+    <div className="services-container">
+      <table className="services-table">
         <thead>
           <tr>
-            <th>Service</th>
-            <th>Status</th>
+            <th className="services-table-header">Service</th>
+            <th className="services-table-header">Status</th>
           </tr>
         </thead>
         <tbody>
           {services.map((item) => (
-            <tr key={item._id}>
-              <td>{item.service}</td>
-              <td>{item.status ? 'Active' : 'Inactive'}</td>
+            <tr key={item._id} className="services-table-row">
+              <td className="services-table-data">{item.service}</td>
+              <td className={`services-table-data ${item.status ? 'active' : 'inactive'}`}>
+                {item.status ? 'Active' : 'Inactive'}
+              </td>
             </tr>
           ))}
         </tbody>
+
       </table>
     </div>
   );

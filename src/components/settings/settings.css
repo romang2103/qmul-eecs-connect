@@ -1,106 +1,133 @@
-body {
-    background-color: #0a192f;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #fff;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 2.5em;
-    margin: 50px 0;
-  }
-  
-  h2 {
-    font-size: 1.8em;
-    margin: 30px 0;
-  }
-  
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  li.setting {
-    margin-bottom: 40px;
-  }
-  
-  p.setting-name {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  .setting-value {
-    margin-left: 30px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="datetime-local"],
-  input[type="text"],
-  select {
-    font-size: 1.2em;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-  
-  button {
-    background-color: #4f98ca;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #2e6ea6;
-  }
-  
-  input[type="radio"]:checked + label,
-  input[type="checkbox"]:checked + label {
-    color: #4f98ca;
-    font-weight: bold;
-  }
-  
-  ::-webkit-datetime-edit-day-field,
-  ::-webkit-datetime-edit-year-field {
-    background-color: #fff;
-    color: #0a192f;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-  }
-  
-  ::-webkit-datetime-edit-month-field {
-    background-color: #4f98ca;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-  }
-  
-  ::-webkit-datetime-edit-hour-field,
-  ::-webkit-datetime-edit-minute-field {
-    background-color: #4f98ca;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-  }
-  
-  select {
-    background-color: #fff;
-    color: #0a192f;
-    border: none;
-    border-radius: 5px;
-    padding: 8px;
-  }
-  
+.container > div {
+  margin: 0;
+  padding: 0;
+}
+
+.container > div > div {
+  box-sizing: border-box;
+}
+
+.account-settings {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-avatar {
+  margin-right: 20px;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name,
+.user-email {
+  margin: 0;
+  font-size: 18px;
+  color: #444;
+}
+
+.bio {
+  margin-top: 30px;
+}
+
+.bio h5 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #444;
+}
+
+.bio p {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgb(255, 255, 255);
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+  border-color: #268fff;
+}
+
+.text-primary {
+  color: #268fff !important;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 4px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}

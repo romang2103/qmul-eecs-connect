@@ -21,7 +21,7 @@ function Nav() {
                             <Link to="/services">EECS Services & Status</Link>
                         </li>
                         <li>
-                            <Link to="/ticket">Ticket Information</Link>
+                            <Link to="/ticket">Tickets and Extenuating Circumstances</Link>
                         </li>
                         <li>
                             <Link to="/ec">Extenuating Circumstances</Link>

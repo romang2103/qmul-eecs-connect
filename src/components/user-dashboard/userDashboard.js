@@ -9,7 +9,7 @@ function UserDashboard() {
         <div className="container">
           <div className="hero-content">
             <h1>Welcome to EECS Connect</h1>
-            <p>Share your feedback and help us improve!</p>
+            <p>Connecting students around the world. Share your feedback and let us know how we did!</p>
             {/* <a href="#" className="btn-primary">
               Get Started
             </a> */}
@@ -20,7 +20,7 @@ function UserDashboard() {
       {/* Features Section */}
       <section className="features">
         <div className="container">
-          <h2>Why Choose Us?</h2>
+          <h2><b>Why Choose Us?</b></h2>
           <div className="feature-item">
             <h3>Easy to Use</h3>
             <p>

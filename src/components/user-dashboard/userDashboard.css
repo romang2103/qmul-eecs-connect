@@ -1,176 +1,112 @@
-/* Global Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Set the background color to navy blue */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-}
-
-/* Hero Section Styles */
-.hero {
-    background-image: linear-gradient(to right, #007bff, #00bfff);
-    padding: 100px 0;
-}
-    
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 30px;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    color: #fff;
-    margin-bottom: 50px;
-}
-
-.hero-content .btn-primary {
-    background-color: #fff;
-    color: #007bff;
-    border: 2px solid #007bff;
-    padding: 10px 20px;
-    font-size: 1rem;
-    text-decoration: none;
-    border-radius: 30px;
-}
-
-.hero-content .btn-primary:hover {
-    background-color: #007bff;
-    color: #fff;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Features Section Styles */
-.features {
-    padding: 100px 0;
-    background-color: #f4f4f4;
-}
-
-.features h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.feature-item {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.feature-item img {
-    margin-bottom: 20px;
-    height: 100px;
-}
-
-.feature-item h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.feature-item p {
-    font-size: 1.2rem;
-    color: #777;
-    line-height: 1.5;
-}
-
-/* About Section Styles */
-.about {
-    padding: 100px 0;
-}
-
-.about h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.about p {
-    font-size: 1.2rem;
-    color: #777;
-    text-align: center;
-    /* max-width: */
-}
-
-.about a {
-    font-size: 1.2rem;
-    color: #7117;
-    text-align: end;
-    /* max-width: */
-}
-/* Contact Section */
-
-.contact {
-    background-color: #0b2c5e;
-    color: #fff;
-    padding: 80px 0;
+    background-color: #1a1c20;
   }
   
-  .contact h2 {
-    font-size: 48px;
-    margin-bottom: 40px;
+  /* Set the color for the heading and text to white */
+  h1,
+  h2,
+  h3,
+  p {
+    color: #fff;
   }
   
-  .contact form {
+  /* Style for the hero section */
+  .hero {
+    background-image: url("https://static.wixstatic.com/media/f6b54b_ea5f2908debd4fdfb85beb88f6f953e7~mv2_d_2048_1365_s_2.jpg/v1/fill/w_979,h_653,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/IMG_4344.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-content {
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  /* Style for the features section */
+  .features {
+    padding: 1rem 0;
+  }
+  
+  .feature-item {
+    margin-bottom: 2rem;
+  }
+  
+  .feature-item h3, h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-item p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  
+  /* Style for the about section */
+  .about {
+    padding: 2rem 0;
+  }
+  
+  .about p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  /* Style for the contact section */
+  .contact {
+    padding: 2rem 0;
   }
   
   .contact label {
-    font-size: 24px;
-    margin-bottom: 20px;
-    flex-basis: 100%;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
   
   .contact input,
   .contact textarea {
-    font-size: 18px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    flex-basis: 100%;
-  }
-  
-  .contact input:focus,
-  .contact textarea:focus {
-    outline: none;
-  }
-  
-  .contact textarea {
-    height: 150px;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
   }
   
   .contact button {
-    font-size: 24px;
-    padding: 10px 20px;
+    height: 40px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    background-color: #fff;
-    color: #0b2c5e;
+    font-size: 18px;
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: background-color 0.3s ease;
   }
   
-  .contact button:hover {
-    background-color: #0b2c5e;
+  /* Style for the footer section */
+  footer {
+    background-color: #141618;
     color: #fff;
+    padding: 1rem 1;
+    text-align: center;
   }
+  
+  footer p {
+    font-size: 1rem;
+  }
+  
