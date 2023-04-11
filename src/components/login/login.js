@@ -23,7 +23,7 @@ function Login() {
     console.log(email, password);
     try {
       const response = await axios.post('http://localhost:5000/users', { email, password });
-      console.log(response.data);
+      console.log(response);
       setIsLoggedIn(true);
     } catch (error) {
       console.log(error);

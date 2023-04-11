@@ -4,6 +4,7 @@ import UserDashboard from '../user-dashboard/userDashboard';
 import EC from '../ECs/EC';
 import Feedback from '../ticket/ticket';
 import Settings from '../settings/settings';
+import Services from '../services/services';
 import './nav.css'
 
 function Nav() {
@@ -17,7 +18,7 @@ function Nav() {
                     </h1>
                     <ul className="menu">
                         <li>
-                            <Link to="/">EECS Services & Status</Link>
+                            <Link to="/services">EECS Services & Status</Link>
                         </li>
                         <li>
                             <Link to="/ticket">Ticket Information</Link>
@@ -34,6 +35,7 @@ function Nav() {
 
             <Routes>
                 <Route exact path="/" element={<UserDashboard />} />
+                <Route path='/services' element={<Services />} />
                 <Route path="/ticket" element={<Feedback />} /> 
                 <Route path="/ec" element={<EC />} />
                 <Route path="/settings" element={<Settings />} />
