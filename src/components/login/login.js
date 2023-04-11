@@ -3,12 +3,14 @@ import './login.css';
 import { useState } from 'react';
 import axios from 'axios';
 import Nav from '../navbar/nav';
+import AdminDashboard from '../admin-dashboard/adminDashboard';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState("")
+  const [role, setRole] = useState('');
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -20,10 +22,14 @@ function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(email, password);
+    // console.log(email, password);
     try {
+      console.log("handling login");
       const response = await axios.post('http://localhost:5000/users', { email, password });
-      console.log(response);
+      console.log(response)
+      // Set the role from the response data
+      setRole(response.data.role);
+      console.log("role", role);
       setIsLoggedIn(true);
     } catch (error) {
       console.log(error);
@@ -35,7 +41,14 @@ function Login() {
   return (
     <div>
         {isLoggedIn ? (
-          <Nav/>
+          console.log(role),
+          role === 'user' ? (
+            // Redirect to User Dashboard
+            <Nav />
+          ) : role === 'admin' ? (
+            // Redirect to Admin Dashboard
+            <AdminDashboard />
+          ) : null
         ) : (
           <div id='Login-form'>
             <img src={logo} alt="Logo" id="logo" />

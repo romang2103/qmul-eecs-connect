@@ -29,7 +29,7 @@ app.post('/users', async (req, res) => {
     const { email, password } = req.body; // destructure email and password from the request body
     const user = await User.findOne({ email, password });
     if (user) {
-      res.status(200).send('Login successful');
+      res.json(user)
     } else {
       res.status(401).send('Invalid email or password');
     }
