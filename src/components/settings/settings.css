@@ -1,6 +1,6 @@
 .container > div {
   margin: 0;
-  padding: 0;
+  padding: 1;
 }
 
 .container > div > div {
@@ -34,10 +34,9 @@
   object-fit: cover;
 }
 
-.user-name,
-.user-email {
+.user-name{
   margin: 0;
-  font-size: 18px;
+  font-size: 25px;
   color: #444;
 }
 
@@ -131,3 +130,12 @@
   background-color: #007bff;
   border-color: #007bff;
 }
+
+.user-name,
+.user-email,
+.user-dob,
+.user-id {
+  display: block;
+  margin-bottom: 10px;
+}
+

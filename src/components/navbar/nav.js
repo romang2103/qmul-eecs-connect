@@ -24,7 +24,7 @@ function Nav() {
                             <Link to="/ticket">Tickets and Extenuating Circumstances</Link>
                         </li>
                         <li>
-                            <Link to="/ec">Extenuating Circumstances</Link>
+                            <Link to="/ec">View Ticket Status</Link>
                         </li>
                         <li>
                             <Link to="/settings">Settings</Link>

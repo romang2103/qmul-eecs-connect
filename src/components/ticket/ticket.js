@@ -5,18 +5,17 @@ function Feedback() {
   const [subject, setSubject] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('General Feedback');
-  const [semester, setSemester] = useState('Fall 2022');
-  const [courseCode, setCourseCode] = useState('');
+  const [priority, setPriority] = useState('Fall 2022');
+  const [attachments, setAttachments] = useState([]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // You can add code here to send the feedback information to the backend
-    alert(`Feedback submitted: ${subject}, ${description}, ${category}, ${semester}, ${courseCode}`);
+    alert(`Feedback submitted: ${subject}, ${description}, ${category}, ${priority}, ${attachments.length} attachment(s)`);
     setSubject('');
     setDescription('');
     setCategory('General Feedback');
-    setSemester('Fall 2022');
-    setCourseCode('');
+    setPriority('Fall 2022');
+    setAttachments([]);
   };
 
   const handleSubjectChange = (event) => {
@@ -31,37 +30,44 @@ function Feedback() {
     setCategory(event.target.value);
   };
 
-  const handleSemesterChange = (event) => {
-    setSemester(event.target.value);
+  const handlePriorityChange = (event) => {
+    setPriority(event.target.value);
   };
 
-  const handleCourseCodeChange = (event) => {
-    setCourseCode(event.target.value);
+  const handleAttachmentChange = (event) => {
+    const files = event.target.files;
+    setAttachments([...attachments, ...files]);
   };
 
   return (
     <div className="feedback-container">
-      <h2 className="feedback-title">Feedback</h2>
+      <h2 className="feedback-title">Ticket Submission Form</h2>
       <form onSubmit={handleSubmit} className="feedback-form">
-        <label htmlFor="subject" className="feedback-label">Subject:</label>
-        <input type="text" id="subject" name="subject" value={subject} onChange={handleSubjectChange} className="feedback-input" />
+        <label htmlFor="subject" className="feedback-label">Module Number:</label>
+        <input type="text" id="subject" placeholder="Enter Module Code here" name="subject" value={subject} onChange={handleSubjectChange} className="feedback-input" />
         <br />
         <label htmlFor="description" className="feedback-label">Description:</label>
-        <textarea id="description" name="description" value={description} onChange={handleDescriptionChange} className="feedback-input"></textarea>
+        <textarea id="description" name="description" placeholder="Enter Ticket Description here" value={description} onChange={handleDescriptionChange} className="feedback-input"></textarea>
         <br />
-        <label htmlFor="category" className="feedback-label">Category:</label>
+        <label htmlFor="category" className="feedback-label">Ticket Category:</label>
         <select id="category" name="category" value={category} onChange={handleCategoryChange} className="feedback-input">
-          <option value="General Feedback">General Feedback</option>
+          <option value="General Feedback">Extenuating Circumstances</option>
           <option value="Course Feedback">Course Feedback</option>
-          <option value="Instructor Feedback">Instructor Feedback</option>
+          <option value="Instructor Feedback">Demonstrator Feedback</option>
           <option value="Facilities Feedback">Facilities Feedback</option>
+          <option value="Other">Other</option>
         </select>
         <br />
-        <label htmlFor="semester" className="feedback-label">Semester:</label>
-        <input type="text" id="semester" name="semester" value={semester} onChange={handleSemesterChange} className="feedback-input" />
+        <label htmlFor="priority" className="feedback-label">Ticket Priority:</label>
+        <select id="priority" name="priority" value={priority} onChange={handlePriorityChange} className="feedback-input">
+          <option value="High">High</option>
+          <option value="Average">Average</option>
+          <option value="Low">Low</option>
+          <option value="Other">Other</option>
+        </select>
         <br />
-        <label htmlFor="courseCode" className="feedback-label">Course Code:</label>
-        <input type="text" id="courseCode" name="courseCode" value={courseCode} onChange={handleCourseCodeChange} className="feedback-input" />
+        <label htmlFor="attachments" className="feedback-label">Attachments:</label>
+        <input type="file" id="attachments" name="attachments" onChange={handleAttachmentChange} multiple className="feedback-input" />
         <br />
         <button type="submit" className="feedback-submit">Submit</button>
       </form>

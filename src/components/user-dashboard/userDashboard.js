@@ -29,16 +29,15 @@ function UserDashboard() {
             </p>
           </div>
           <div className="feature-item">
-            <h3>Anonymous Feedback</h3>
+            <h3>Quick and Effective Feedback</h3>
             <p>
-              We value your privacy and allow you to give feedback anonymously.
+              We value your privacy and allow you to communicate quickly through an efficient system with your demonstrators.
             </p>
           </div>
           <div className="feature-item">
             <h3>Real-time Reports</h3>
             <p>
-              Get real-time reports and insights about the feedback received from
-              students and staff.
+              Get real-time insights/status about your ticket/feedback, providing you with up-to-date information about your education, allowing you to analyse your areas for improvement.
             </p>
           </div>
         </div>
@@ -48,15 +47,13 @@ function UserDashboard() {
       <section className="about">
         <div className="container">
           <h2>About Us</h2>
+          <br></br>
           <p>
-            We are a team of dedicated professionals who are passionate about
+            We are are passionate about
             improving the quality of education in our university. Our feedback
             system is designed to help students and staff share their opinions and
             suggestions anonymously.
           </p>
-          {/* <a href="#" className="btn-secondary">
-            Learn More
-          </a> */}
         </div>
       </section>
 
@@ -65,14 +62,14 @@ function UserDashboard() {
         <div className="container">
           <h2>Contact Us</h2>
           <form action="#" method="POST">
-            <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" required />
+            <label htmlFor="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter Name" required />
 
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" required />
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter Email" required />
 
-            <label htmlFor="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
+            <label htmlFor="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Let us know how we did!" required></textarea>
 
             <button type="submit" className="btn-primary">
               Submit

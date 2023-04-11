@@ -11,11 +11,19 @@ function Settings() {
 				<div class="account-settings">
 					<div class="user-profile">
 						<div class="user-avatar">
-              <img src="https://www.pngkit.com/png/detail/126-1262807_instagram-default-profile-picture-png.png" alt="Maxwell Admin"></img>
+              <img src="https://www.pngkit.com/png/detail/126-1262807_instagram-default-profile-picture-png.png" alt="User Display"></img>
 						</div>
-						<h5 class="user-name">User Name</h5>
-						<h6 class="user-email">username1@qmul.ac.uk</h6>
-					</div>
+						<h2 class="user-name">User Name</h2>
+					  </div>
+            <div>
+            <h5 class="user-dob">dd/mm/yyyy</h5>
+            </div>
+            <div>
+            <h5 class="user-id">StudentID(210504053)</h5>
+            </div>
+            <div>
+            <h5 class="user-email">username1@qmul.ac.uk</h5>
+            </div>
 					<div class="bio">
 						<h2 class="mb-2 text-primary">About</h2>
 						<p>Second year computer science student at Queen Mary's University of London, working within the School of Electronics and Engineering.</p>
@@ -40,19 +48,13 @@ function Settings() {
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
 							<label for="eMail">Email</label>
-							<input type="email" class="form-control" id="eMail" placeholder="Enter email ID"></input>
+							<input type="email" class="form-control" id="eMail" placeholder="Enter email address"></input>
 						</div>
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
 							<label for="phone">Phone</label>
 							<input type="text" class="form-control" id="phone" placeholder="Enter phone number"></input>
-						</div>
-					</div>
-					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-						<div class="form-group">
-							<label for="website">Website URL</label>
-							<input type="url" class="form-control" id="website" placeholder="Website url"></input>
 						</div>
 					</div>
 				</div>
@@ -63,7 +65,7 @@ function Settings() {
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
 							<label for="Street">Street</label>
-							<input type="name" class="form-control" id="Street" placeholder="Enter Street"></input>
+							<input type="name" class="form-control" id="Street" placeholder="Enter House Number and Street Name"></input>
 						</div>
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -74,14 +76,14 @@ function Settings() {
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
-							<label for="sTate">State</label>
-							<input type="text" class="form-control" id="sTate" placeholder="Enter State"></input>
+							<label for="sTate">County</label>
+							<input type="text" class="form-control" id="sTate" placeholder="Enter County"></input>
 						</div>
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 						<div class="form-group">
-							<label for="zIp">Zip Code</label>
-							<input type="text" class="form-control" id="zIp" placeholder="Zip Code"></input>
+							<label for="zIp">Postcode</label>
+							<input type="text" class="form-control" id="zIp" placeholder="Postcode"></input>
 						</div>
 					</div>
 				</div>
