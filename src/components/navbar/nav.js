@@ -5,6 +5,7 @@ import EC from '../ECs/EC';
 import Feedback from '../ticket/ticket';
 import Settings from '../settings/settings';
 import Services from '../services/services';
+import EECSLabs from '../EECSLabs/EECSLabs';
 import './nav.css'
 
 function Nav() {
@@ -21,10 +22,13 @@ function Nav() {
                             <Link to="/services">EECS Services & Status</Link>
                         </li>
                         <li>
-                            <Link to="/ticket">Tickets and Extenuating Circumstances</Link>
+                            <Link to="/ticket">Tickets & Extenuating Circumstances</Link>
                         </li>
                         <li>
                             <Link to="/ec">View Ticket Status</Link>
+                        </li>
+                        <li>
+                            <Link to="/EECSLabs">EECS Labs</Link>
                         </li>
                         <li>
                             <Link to="/settings">Settings</Link>
@@ -38,6 +42,7 @@ function Nav() {
                 <Route path='/services' element={<Services />} />
                 <Route path="/ticket" element={<Feedback />} /> 
                 <Route path="/ec" element={<EC />} />
+                <Route path="/EECSLabs" element={<EECSLabs />} />
                 <Route path="/settings" element={<Settings />} />
             </Routes>
         </React.Fragment>

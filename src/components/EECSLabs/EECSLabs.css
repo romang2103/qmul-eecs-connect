@@ -1,0 +1,92 @@
+body {
+    background-color:#0a192f;
+}
+
+.tr{
+    padding: 30px;
+}
+
+.toc {
+    border: 1px solid #e0e0e0; /* Border width and color */
+    margin-left: 30px; /* padding around the box */
+    padding: 20px;
+    width: 250px;
+    color: white;
+    margin-bottom: 50px;
+    margin-top: 20px;
+  }
+
+/* CSS to set a specific width for the table container */
+.Labs {
+    width: 80%; 
+    margin: 0 auto; /* To center the table horizontally */
+  }
+
+  div#opening-hours{
+    width: 550px;
+    padding-left: 135px;
+  }
+
+  div#Desktops{
+    width: 550px;
+    padding-left: 135px;
+  }
+
+  
+
+  img {
+    width: 90px;
+    height: 70px;
+}
+/* Add CSS to create lines between table columns */
+table {
+    border-collapse: collapse;
+    width: 85%;
+    margin-bottom: 50px;
+    margin-left: 60px;
+  }
+  
+  h1{
+    font-size: 1.7rem;
+  }
+
+  h2{
+    margin-left: 60px;
+    margin-bottom: 20px;
+  }
+
+  p{
+    margin-left: 60px;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  /* Style for table caption */
+  caption {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: white;
+
+  }
+  
+  /* Style for table header */
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Style for odd rows */
+  tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Style for even rows */
+  tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
