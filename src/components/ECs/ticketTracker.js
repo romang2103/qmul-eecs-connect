@@ -30,7 +30,7 @@ function TicketTracker({ userId }) { // Pass the userId as a prop to the compone
           {tickets.map((ticket) => (
             <li key={ticket.id} className="ticket-item">
               <h3 className="ticket-subject">{ticket.subject}</h3>
-              <p className="ticket-description">{ticket.description}</p>
+              <p className="ticket-description">Description: {ticket.description}</p>
               <p className="ticket-category">Category: {ticket.category}</p>
               <p className="ticket-priority">Priority: {ticket.priority}</p>
               <p className="ticket-response">Response: {ticket.responsemessage}</p>
