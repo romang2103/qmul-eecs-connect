@@ -12,7 +12,7 @@ const Services = () => {
       const response = await axios.get("http://localhost:5000/services"); // Updated URL to match backend endpoint
       setServices(response.data);
       console.log(response);
-    } catch (error) {   
+    } catch (error) {
       console.error("Error fetching data:", error);
     }
   };

@@ -28,11 +28,9 @@ const AdminServices = () => {
       // Fetch updated services data from backend
       const response = await axios.get('http://localhost:5000/services');
       const updatedServices = response.data;
-      console.log("Services Updated", updatedServices);
 
       // Update state with new status
       setServices(
-        // services.map((item) => (item._id === serviceId ? { ...item, status: updatedServices } : item))
         services.map((item) => {
             if (item._id === serviceId) {
               return { ...item, status: !item.status }; // Toggle the status

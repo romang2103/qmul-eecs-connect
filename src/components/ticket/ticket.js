@@ -1,21 +1,47 @@
 import React, { useState } from 'react';
 import './ticket.css';
+import axios from 'axios';
 
-function Feedback() {
+function Ticket(props) {
   const [subject, setSubject] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('General Feedback');
   const [priority, setPriority] = useState('Fall 2022');
   const [attachments, setAttachments] = useState([]);
+  const userId  = props.userId;
+  // const [tickets, setTickets] = useState([]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(`Feedback submitted: ${subject}, ${description}, ${category}, ${priority}, ${attachments.length} attachment(s)`);
-    setSubject('');
-    setDescription('');
-    setCategory('General Feedback');
-    setPriority('Fall 2022');
-    setAttachments([]);
+
+    console.log("handling submit", userId);
+
+    try {
+      // Create a new ticket object with the form data
+      const newTicket = {
+        subject: subject,
+        description: description,
+        category: category,
+        priority: priority,
+        attachments: attachments,
+        responsemessage: '', // Initialize responsemessage as an empty string
+        responded: false // Initialize responded as false
+      };
+
+      await axios.post(`http://localhost:5000/users/${userId}`, newTicket); // Update the API endpoint to include the userId in the URL
+
+      // Reset form fields after successful submission
+      setSubject('');
+      setDescription('');
+      setCategory('General Feedback');
+      setPriority('Fall 2022');
+      setAttachments([]);
+
+      alert('Feedback submitted successfully!');
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      alert('Failed to submit feedback. Please try again later.');
+    }
   };
 
   const handleSubjectChange = (event) => {
@@ -75,4 +101,4 @@ function Feedback() {
   );
 }
 
-export default Feedback;
+export default Ticket;

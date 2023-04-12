@@ -1,13 +1,16 @@
 import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import UserDashboard from '../user-dashboard/userDashboard';
-import EC from '../ECs/EC';
-import Feedback from '../ticket/ticket';
 import Settings from '../settings/settings';
 import Services from '../services/services';
 import './nav.css'
+import Ticket from '../ticket/ticket';
+import TicketTracker from '../ECs/ticketTracker';
 
-function Nav() {
+function Nav(props) {
+    const userId = props.userId;
+    console.log(props.userId);
+
     return (
         <React.Fragment>
             {/* Navigation Bar */}
@@ -36,8 +39,8 @@ function Nav() {
             <Routes>
                 <Route exact path="/" element={<UserDashboard />} />
                 <Route path='/services' element={<Services />} />
-                <Route path="/ticket" element={<Feedback />} /> 
-                <Route path="/ec" element={<EC />} />
+                <Route path="/ticket" element={<Ticket userId={userId}/>} /> 
+                <Route path="/ec" element={<TicketTracker userId={userId}/>} />
                 <Route path="/settings" element={<Settings />} />
             </Routes>
         </React.Fragment>

@@ -1,0 +1,33 @@
+.ticket-tracker {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ticket-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ticket-item {
+  background-color: blue;
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.ticket-item h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.ticket-item p {
+  margin: 0;
+}
+
+.ticket-item .status {
+  font-weight: bold;
+}
+
+.ticket-item .description {
+  color: #888;
+}

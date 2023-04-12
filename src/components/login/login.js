@@ -11,6 +11,7 @@ function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [message, setMessage] = useState("")
   const [role, setRole] = useState('');
+  const [userId, setUserId] = useState(null);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -26,7 +27,8 @@ function Login() {
     try {
       console.log("handling login");
       const response = await axios.post('http://localhost:5000/users', { email, password });
-      console.log(response)
+      setUserId(response.data._id);
+      console.log("userId", response.data._id);
       // Set the role from the response data
       setRole(response.data.role);
       console.log("role", role);
@@ -44,7 +46,7 @@ function Login() {
           console.log(role),
           role === 'user' ? (
             // Redirect to User Dashboard
-            <Nav />
+            <Nav userId={userId}/>
           ) : role === 'admin' ? (
             // Redirect to Admin Dashboard
             <AdminDashboard />
