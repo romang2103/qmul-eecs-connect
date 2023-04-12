@@ -5,8 +5,8 @@ import axios from 'axios';
 function Ticket(props) {
   const [subject, setSubject] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('General Feedback');
-  const [priority, setPriority] = useState('Fall 2022');
+  const [category, setCategory] = useState('');
+  const [priority, setPriority] = useState('');
   const [attachments, setAttachments] = useState([]);
   const userId  = props.userId;
   // const [tickets, setTickets] = useState([]);
@@ -33,8 +33,8 @@ function Ticket(props) {
       // Reset form fields after successful submission
       setSubject('');
       setDescription('');
-      setCategory('General Feedback');
-      setPriority('Fall 2022');
+      setCategory('');
+      setPriority('');
       setAttachments([]);
 
       alert('Feedback submitted successfully!');
