@@ -45,24 +45,12 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
-// GET route to fetch user details by user ID
-// app.get('/users/:id', async (req, res) => {
-  
-//   const userId = req.params.id;
-//   const user = await User.findById(userId);
-
-//   if (user) {
-//     res.status(200).json(user);
-//   } else {
-//     res.status(404).json({ error: 'User not found' });
-//   }
-// });
-
 // PATCH route to update user details by user ID
 app.patch('/users/:id', async (req, res) => {
   try {
     const userId = req.params.id;
-    const { updateUser, addressInfo } = req.body;
+    const updateUser = req.body;
+    const addressInfo = req.body;
     const user = await User.findOne({ _id: userId });
 
     if (user) {
@@ -88,6 +76,7 @@ app.patch('/users/:id', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+
 
 
 // Login Auth
@@ -127,21 +116,34 @@ app.get("/services", async (req, res) => {
   }
 });
 
-// Fetch tickets for user
+// GET route to fetch user details by user ID
 app.get('/users/:id', async (req, res) => {
-  try {
-    const userId = req.params.id; // Extract user ID from URL params
-    const user = await User.findById(userId); // Fetch user by ID
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-    const tickets = user.tickets || []; // Extract tickets from user data
-    res.json(tickets);
-  } catch (error) {
-    console.error('Error fetching tickets:', error);
-    res.status(500).json({ error: 'Failed to fetch tickets' });
+  
+  const userId = req.params.id;
+  const user = await User.findById(userId);
+
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404).json({ error: 'User not found' });
   }
 });
+
+// Fetch tickets for user
+// app.get('/users/:id', async (req, res) => {
+//   try {
+//     const userId = req.params.id; // Extract user ID from URL params
+//     const user = await User.findById(userId); // Fetch user by ID
+//     if (!user) {
+//       return res.status(404).json({ error: 'User not found' });
+//     }
+//     const tickets = user.tickets || []; // Extract tickets from user data
+//     res.json(tickets);
+//   } catch (error) {
+//     console.error('Error fetching tickets:', error);
+//     res.status(500).json({ error: 'Failed to fetch tickets' });
+//   }
+// });
 
 // Define endpoint for toggling service status
 app.put('/services/:id/toggle', async (req, res) => {

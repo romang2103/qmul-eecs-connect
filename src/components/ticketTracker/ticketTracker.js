@@ -12,8 +12,8 @@ function TicketTracker(props) { // Pass the userId as a prop to the component
     const fetchTickets = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/users/${userId}`);
-        console.log("fetched tickets", response.data);
-        setTickets(response.data);
+        console.log("fetched tickets", response.data.tickets);
+        setTickets(response.data.tickets);
       } catch (error) {
         console.error('Error fetching tickets:', error);
       }

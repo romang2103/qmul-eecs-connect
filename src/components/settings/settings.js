@@ -51,16 +51,16 @@ function Settings(props) {
 			email: updatedEmail
 		  };
 
-      const address = {
+      const updatedAddress = {
         street: updatedStreet,
 			  city: updatedCity,
 			  country: updatedCountry,
 			  postcode: updatedZipcode
 			};
-      console.log("address:", address);
+      // console.log("address:", address);
 	
 		  // Save the new user to the database
-		  await axios.patch(`http://localhost:5000/users/${userId}`, { updateUser,  address });
+		  await axios.patch(`http://localhost:5000/users/${userId}`, { updateUser,  address: updatedAddress });
 		  alert('Personal details updated successfully!');
 
 		  // Clear form data
