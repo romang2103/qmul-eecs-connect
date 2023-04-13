@@ -15,9 +15,19 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((err) => console.log(err));
 
 const UserSchema = new mongoose.Schema({
+  name: String,
+  dob: String,
+  stu_id: String,
+  phone: String,
   email: String,
   password: String,
   role: String,
+  address: [{
+    street: String,
+    city: String,
+    country: String,
+    postcode: String
+  }],
   tickets: [{
     subject: String,
     description: String,
@@ -34,6 +44,49 @@ const UserSchema = new mongoose.Schema({
 
 
 const User = mongoose.model('User', UserSchema);
+
+// GET route to fetch user details by user ID
+app.get('/users/:id', async (req, res) => {
+  
+  const userId = req.params.id;
+  const user = await User.findById(userId);
+
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404).json({ error: 'User not found' });
+  }
+});
+
+// PATCH route to update user details by user ID
+app.patch('/users/:id', async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const updateUser = req.body;
+    const user = await User.findOne({ _id: userId });
+
+    if (user) {
+      // Update user details
+      user.name = updateUser.name;
+      user.email = updateUser.email || user.email;
+      user.phone = updateUser.phone || user.phone;
+      user.street = updateUser.address.street || user.street;
+      user.city = updateUser.address.city || user.city;
+      user.country = updateUser.address.country || user.country;
+      user.postcode = updateUser.address.zipcode || user.zipcode;
+
+      await user.save();
+
+      res.status(200).json({ message: 'User details updated successfully' });
+    } else {
+      // Send response when user is not found
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Server error');
+  }
+});
 
 
 // Login Auth
@@ -110,15 +163,6 @@ app.put('/services/:id/toggle', async (req, res) => {
     res.status(500).json({ error: 'Failed to toggle service status' });
   }
 });
-
-// Ticket Schema
-const ticketSchema = new mongoose.Schema({
-  title: String,
-  description: String
-});
-
-// Ticket Model
-const Ticket = mongoose.model('Ticket', ticketSchema);
 
 // Endpoint to handle ticket submission
 app.post('/users/:userId', async (req, res) => {

@@ -46,7 +46,7 @@ function Nav(props) {
                 <Route path="/ticket" element={<Ticket userId={userId}/>} /> 
                 <Route path="/track-tickets" element={<TicketTracker userId={userId}/>} />
                 <Route path="/EECSLabs" element={<EECSLabs />} />
-                <Route path="/settings" element={<Settings />} />
+                <Route path="/settings" element={<Settings userId={userId}/>} />
             </Routes>
         </React.Fragment>
     );
