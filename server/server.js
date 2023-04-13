@@ -46,34 +46,35 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 
 // GET route to fetch user details by user ID
-app.get('/users/:id', async (req, res) => {
+// app.get('/users/:id', async (req, res) => {
   
-  const userId = req.params.id;
-  const user = await User.findById(userId);
+//   const userId = req.params.id;
+//   const user = await User.findById(userId);
 
-  if (user) {
-    res.status(200).json(user);
-  } else {
-    res.status(404).json({ error: 'User not found' });
-  }
-});
+//   if (user) {
+//     res.status(200).json(user);
+//   } else {
+//     res.status(404).json({ error: 'User not found' });
+//   }
+// });
 
 // PATCH route to update user details by user ID
 app.patch('/users/:id', async (req, res) => {
   try {
     const userId = req.params.id;
-    const updateUser = req.body;
+    const { updateUser, addressInfo } = req.body;
     const user = await User.findOne({ _id: userId });
 
     if (user) {
       // Update user details
       user.name = updateUser.name;
-      user.email = updateUser.email || user.email;
-      user.phone = updateUser.phone || user.phone;
-      user.street = updateUser.address.street || user.street;
-      user.city = updateUser.address.city || user.city;
-      user.country = updateUser.address.country || user.country;
-      user.postcode = updateUser.address.zipcode || user.zipcode;
+      user.email = updateUser.email;
+      user.phone = updateUser.phone;
+      user.address.push(addressInfo);
+      // user.address.street = updateUser.address.street || user.street;
+      // user.address.city = updateUser.address.city || user.city;
+      // user.address.country = updateUser.address.country || user.country;
+      // user.address.postcode = updateUser.address.zipcode || user.zipcode;
 
       await user.save();
 
@@ -126,7 +127,7 @@ app.get("/services", async (req, res) => {
   }
 });
 
-// Fetch data for service status table
+// Fetch tickets for user
 app.get('/users/:id', async (req, res) => {
   try {
     const userId = req.params.id; // Extract user ID from URL params
