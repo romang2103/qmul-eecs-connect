@@ -49,8 +49,8 @@ const User = mongoose.model('User', UserSchema);
 app.patch('/users/:id', async (req, res) => {
   try {
     const userId = req.params.id;
-    const updateUser = req.body;
-    const addressInfo = req.body;
+    const updateUser = req.body.updateUser;
+    const address = req.body.address;
     const user = await User.findOne({ _id: userId });
 
     if (user) {
@@ -58,11 +58,7 @@ app.patch('/users/:id', async (req, res) => {
       user.name = updateUser.name;
       user.email = updateUser.email;
       user.phone = updateUser.phone;
-      user.address.push(addressInfo);
-      // user.address.street = updateUser.address.street || user.street;
-      // user.address.city = updateUser.address.city || user.city;
-      // user.address.country = updateUser.address.country || user.country;
-      // user.address.postcode = updateUser.address.zipcode || user.zipcode;
+      user.address = address;
 
       await user.save();
 
