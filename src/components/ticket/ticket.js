@@ -5,8 +5,8 @@ import axios from 'axios';
 function Ticket(props) {
   const [subject, setSubject] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
-  const [priority, setPriority] = useState('');
+  const [category, setCategory] = useState('Extenuating Circumstances');
+  const [priority, setPriority] = useState('High');
   const [attachments, setAttachments] = useState([]);
   const userId  = props.userId;
   // const [tickets, setTickets] = useState([]);
@@ -25,7 +25,8 @@ function Ticket(props) {
         priority: priority,
         attachments: attachments,
         responsemessage: '', // Initialize responsemessage as an empty string
-        responded: false // Initialize responded as false
+        responded: false, // Initialize responded as false
+        userId: userId
       };
 
       await axios.post(`http://localhost:5000/users/${userId}`, newTicket); // Update the API endpoint to include the userId in the URL
@@ -53,10 +54,12 @@ function Ticket(props) {
   };
 
   const handleCategoryChange = (event) => {
+    console.log("setting category", event.target.value);
     setCategory(event.target.value);
   };
 
   const handlePriorityChange = (event) => {
+    console.log("setting priority", event.target.value);
     setPriority(event.target.value);
   };
 
@@ -77,9 +80,9 @@ function Ticket(props) {
         <br />
         <label htmlFor="category" className="feedback-label">Ticket Category:</label>
         <select id="category" name="category" value={category} onChange={handleCategoryChange} className="feedback-input">
-          <option value="General Feedback">Extenuating Circumstances</option>
+          <option value="Extenuating Circumstances">Extenuating Circumstances</option>
           <option value="Course Feedback">Course Feedback</option>
-          <option value="Instructor Feedback">Demonstrator Feedback</option>
+          <option value="Demonstrator Feedback">Demonstrator Feedback</option>
           <option value="Facilities Feedback">Facilities Feedback</option>
           <option value="Other">Other</option>
         </select>

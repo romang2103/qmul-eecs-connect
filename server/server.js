@@ -2,10 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const { default: axios } = require('axios');
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json()); // use body-parser middleware to parse JSON
+app.use(bodyParser.json());
 
 const uri = "mongodb+srv://se53:password123!@cluster0.fdolhxg.mongodb.net/eecs-connect?retryWrites=true&w=majority";
 
@@ -16,6 +17,7 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 const UserSchema = new mongoose.Schema({
   email: String,
   password: String,
+  role: String,
   tickets: [{
     subject: String,
     description: String,
@@ -24,7 +26,8 @@ const UserSchema = new mongoose.Schema({
     attachments: Array,
     status: String,
     responseMessage: String,
-    responded: Boolean
+    responded: Boolean,
+    userId: String
   }]
 });
 
@@ -36,7 +39,7 @@ const User = mongoose.model('User', UserSchema);
 // Login Auth
 app.post('/users', async (req, res) => {
   try {
-    const { email, password } = req.body; // destructure email and password from the request body
+    const { email, password } = req.body;
     const user = await User.findOne({ email, password });
     if (user) {
       res.json(user)
@@ -78,7 +81,7 @@ app.get('/users/:id', async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
-    const tickets = user.tickets || []; // Extract tickets from user data, assuming tickets are stored as an array in the user object
+    const tickets = user.tickets || []; // Extract tickets from user data
     res.json(tickets);
   } catch (error) {
     console.error('Error fetching tickets:', error);
@@ -108,13 +111,21 @@ app.put('/services/:id/toggle', async (req, res) => {
   }
 });
 
+// Ticket Schema
+const ticketSchema = new mongoose.Schema({
+  title: String,
+  description: String
+});
+
+// Ticket Model
+const Ticket = mongoose.model('Ticket', ticketSchema);
+
 // Endpoint to handle ticket submission
 app.post('/users/:userId', async (req, res) => {
   const userId = req.params.userId;
   const newTicket = req.body; // Ticket data sent in the request body
 
   try {
-    // Find the user by userId in MongoDB
     const user = await User.findOne({ _id: userId });
 
     if (user) {
@@ -131,53 +142,81 @@ app.post('/users/:userId', async (req, res) => {
   }
 });
 
-// Ticket Schema
-const ticketSchema = new mongoose.Schema({
-  title: String,
-  description: String
-});
-
-// Ticket Model
-const Ticket = mongoose.model('Ticket', ticketSchema);
-
-// Update Ticket
-app.put('/users/:userId/:ticketId', async (req, res) => {
-  try {
-    const { userId, ticketId } = req.params;
-    const { description } = req.body;
-
-    const updatedTicket = await Ticket.findByIdAndUpdate(ticketId, { description }, { new: true });
-
-    // Send updated ticket as response
-    res.json(updatedTicket);
-
-    // Alternatively, you can use Axios to send the updated ticket as response
-    // axios.put(`http://localhost:${PORT}/users/${userId}/${ticketId}`, { description })
-    //   .then(response => res.json(response.data))
-    //   .catch(error => res.status(500).json({ error: 'Failed to update ticket' }));
-
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to update ticket' });
-  }
-});
-
 // Delete Ticket
 app.delete('/users/:userId/:ticketId', async (req, res) => {
   try {
     const { userId, ticketId } = req.params;
 
-    await Ticket.findByIdAndDelete(ticketId);
+    // Find user using userId
+    const user = await User.findOne({ _id: userId });
+
+    // Find and delete ticket using ticketId
+    user.tickets.pull(ticketId);
+
+    // Save the updated user document
+    await user.save();
 
     // Send success message as response
     res.json({ message: 'Ticket deleted successfully' });
 
-    // Alternatively, you can use Axios to send the success message as response
-    // axios.delete(`http://localhost:${PORT}/users/${userId}/${ticketId}`)
-    //   .then(response => res.json(response.data))
-    //   .catch(error => res.status(500).json({ error: 'Failed to delete ticket' }));
-
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete ticket' });
+  }
+});
+
+// Route to fetch all tickets from all users with role = 'user' and responded = false
+app.get('/users', async (req, res) => {
+  try {
+    // Fetch all users with role = 'user' from the database
+    const users = await User.find({ role: 'user' , 'tickets.responded': false});
+
+    // Extract tickets from all users
+    const allTickets = users.reduce((acc, user) => {
+      const nonResTickets = user.tickets.filter(ticket => !ticket.responded);
+      return [...acc, ...nonResTickets];
+    }, []);
+
+    // Send the tickets as JSON response
+    res.json(allTickets);
+  } catch (err) {
+    console.error('Error fetching tickets:', err);
+    res.status(500).json({ error: 'Failed to fetch tickets' });
+  }
+});
+
+// Route to update a ticket with a response message
+app.patch('/users/:userId/:ticketId', async (req, res) => {
+  try{
+    const { userId, ticketId } = req.params;
+    const { responseMessage } = req.body;
+
+    // Find user
+    const user = await User.findOne({ _id: userId });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found.' });
+    }
+
+    // Find ticket
+    const ticket = user.tickets.find(ticket => ticket._id.toString() === ticketId);
+
+    if (!ticket) {
+      return res.status(404).json({ success: false, message: 'Ticket not found.' });
+    }
+
+    // Update responseMessage
+    ticket.responseMessage = responseMessage;
+
+    // Update responded boolean to true
+    ticket.responded = true;
+
+    // Save changes
+    await user.save();
+
+    return res.json({ success: true, message: 'Response submitted successfully!' });
+
+  } catch (err) {
+    res.status(404).json({ success: false, message: 'Failed to respond to ticket.' });
   }
 });
 

@@ -49,7 +49,7 @@ function Login() {
             <Nav userId={userId}/>
           ) : role === 'admin' ? (
             // Redirect to Admin Dashboard
-            <AdminDashboard />
+            <AdminDashboard userId={userId}/>
           ) : null
         ) : (
           <div id='Login-form'>

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // For making HTTP requests to your backend MongoDB server
+import axios from "axios";
 
 const AdminServices = () => {
-  const [services, setServices] = useState([]); // State to store table data
+  const [services, setServices] = useState([]);
 
-  // Function to fetch data from backend MongoDB server (example)
+  // Function to fetch data from backend
   const fetchData = async () => {
     console.log("trying to fetch data");
     try {
-      const response = await axios.get("http://localhost:5000/services"); // Updated URL to match backend endpoint
+      const response = await axios.get("http://localhost:5000/services");
       setServices(response.data);
       console.log(response);
     } catch (error) {   
@@ -23,11 +23,10 @@ const AdminServices = () => {
   // Function to handle status change for a service
   const handleStatusChange = async (serviceId) => {
     try {
-      await axios.put(`http://localhost:5000/services/${serviceId}/toggle`); // Replace with your backend URL and data format
+      await axios.put(`http://localhost:5000/services/${serviceId}/toggle`);
       
       // Fetch updated services data from backend
-      const response = await axios.get('http://localhost:5000/services');
-      const updatedServices = response.data;
+      await axios.get('http://localhost:5000/services');
 
       // Update state with new status
       setServices(

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ticketTracker.css';
 
-function TicketTracker({ userId }) { // Pass the userId as a prop to the component
+function TicketTracker(props) { // Pass the userId as a prop to the component
   const [tickets, setTickets] = useState([]);
+  const userId = props.userId;
   console.log("ticket tracker", userId);
 
   useEffect(() => {
@@ -18,7 +19,23 @@ function TicketTracker({ userId }) { // Pass the userId as a prop to the compone
       }
     };
     fetchTickets();
-  }, [userId]); // Update the dependency array to include userId prop
+  }, [userId]);
+
+const handleDeleteTicket = async (ticketId) => {
+  // Implement the delete ticket logic here
+  try {
+    // Send a DELETE request to delete the ticket with the given ticketId
+    await axios.delete(`http://localhost:5000/users/${userId}/${ticketId}`);
+    console.log('Ticket deleted:', ticketId);
+
+    const response = await axios.get(`http://localhost:5000/users/${userId}`);
+    setTickets(response.data);
+
+  } catch (error) {
+    console.error('Error deleting ticket:', error);
+  }
+};
+
 
   return (
     <div className="ticket-tracking-container">
@@ -33,10 +50,9 @@ function TicketTracker({ userId }) { // Pass the userId as a prop to the compone
               <p className="ticket-description">Description: {ticket.description}</p>
               <p className="ticket-category">Category: {ticket.category}</p>
               <p className="ticket-priority">Priority: {ticket.priority}</p>
-              <p className="ticket-response">Response: {ticket.responsemessage}</p>
+              <p className="ticket-response">Response: {ticket.responseMessage}</p>
               <p className="ticket-responded">Responded: {ticket.responded ? 'Yes' : 'No'}</p>
-              {/* Render other ticket details as needed */}
-              {/* Render attachments as needed */}
+              <button className="ticket-delete-button" onClick={() => handleDeleteTicket(ticket._id)}>Delete</button>
             </li>
           ))}
         </ul>
