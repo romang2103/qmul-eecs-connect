@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/qmul-eecs-connect/static/css/main.e322d635.css",
+    "main.js": "/qmul-eecs-connect/static/js/main.37a1b68b.js",
+    "static/media/logo2.png": "/qmul-eecs-connect/static/media/logo2.8a8c076b8cacfc5b87f4.png",
+    "index.html": "/qmul-eecs-connect/index.html",
+    "main.e322d635.css.map": "/qmul-eecs-connect/static/css/main.e322d635.css.map",
+    "main.37a1b68b.js.map": "/qmul-eecs-connect/static/js/main.37a1b68b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e322d635.css",
+    "static/js/main.37a1b68b.js"
+  ]
+}
