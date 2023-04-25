@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "concurrently \"node server/server.js\" \"react-scripts start\"",
-    "predeploy": "npm run build",
+    "predeploy": "concurrently \"node server/server.js\" \"npm run build\"",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
