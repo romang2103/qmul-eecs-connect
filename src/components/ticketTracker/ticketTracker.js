@@ -29,7 +29,7 @@ const handleDeleteTicket = async (ticketId) => {
     console.log('Ticket deleted:', ticketId);
 
     const response = await axios.get(`http://localhost:5000/users/${userId}`);
-    setTickets(response.data);
+    setTickets(response.data.tickets);
 
   } catch (error) {
     console.error('Error deleting ticket:', error);

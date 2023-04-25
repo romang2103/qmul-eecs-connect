@@ -23,6 +23,8 @@ function AdminTickets(props) {
     try {
       await axios.patch(`http://localhost:5000/users/${userId}/${ticketId}`, { responseMessage });
       alert('Response submitted successfully!');
+      const response = await axios.get('http://localhost:5000/users');
+      setTickets(response.data);
     } catch (error) {
       console.error('Error submitting response:', error);
       alert('Failed to submit response. Please try again later.');
